@@ -3,7 +3,7 @@
   "short_name": "jasp",
   "theme_color": "#2196f3",
   "background_color": "#2196f3",
-  "display": "browser",
+  "display": "standalone",
   "scope": "/",
-  "start_url": "/"
+  "start_url": "https://dizzydrwaf.github.io/pwa/"
 }
