@@ -8,7 +8,7 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-
+let document;
 
 let deferredEvent;
 const installButton = document.getElementById('installbtn')
