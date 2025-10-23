@@ -17,5 +17,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "sass": "sass style.sass style.css"
+  },
+  "devDependencies": {
+    "stylelint": "^16.25.0",
+    "stylelint-config-standard": "^39.0.1"
   }
 }
