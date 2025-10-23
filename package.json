@@ -1,0 +1,21 @@
+{
+  "name": "pwa",
+  "version": "1.0.0",
+  "description": "sass compiler",
+  "homepage": "https://github.com/dizzydrwaf/pwa#readme",
+  "bugs": {
+    "url": "https://github.com/dizzydrwaf/pwa/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dizzydrwaf/pwa.git"
+  },
+  "license": "ISC",
+  "author": "me",
+  "type": "commonjs",
+  "main": "js.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass style.sass style.css"
+  }
+}
