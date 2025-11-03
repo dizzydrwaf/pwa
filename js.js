@@ -19,7 +19,7 @@ if ('serviceWorker' in navigator) {
       Math.abs(event.rotationRate.gamma) > 256
     ) {
       // Toggle the button color
-      const button = document.getElementById('shakeButton');
+      const button = document.getElementById('shakebtn');
       if (isToggled) {
         button.style.backgroundColor = 'blue';
         button.style.color = 'white';
