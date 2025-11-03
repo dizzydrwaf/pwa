@@ -8,23 +8,44 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-let document;
 
-let deferredEvent;
-const installButton = document.getElementById('installbtn')
+  let isToggled = false;
 
-window.addEventListener('beforeinstallprompt', (e) => {
-  // prevent the browser from displaying the default install dialog
-  e.preventDefault();
-  
-  // Stash the event so it can be triggered later when the user clicks the button
-  deferredEvent = e;
-});
-
-installButton.addEventListener('click', () => {
-  // if the deferredEvent exists, call its prompt method to display the install dialog
-  if(deferredEvent) {
-    deferredEvent.prompt();
+  function handleMotion(event) {
+    // Detect strong shake
+    if (
+      Math.abs(event.rotationRate.alpha) > 256 ||
+      Math.abs(event.rotationRate.beta) > 256 ||
+      Math.abs(event.rotationRate.gamma) > 256
+    ) {
+      // Toggle the button color
+      const button = document.getElementById('shakeButton');
+      if (isToggled) {
+        button.style.backgroundColor = 'blue';
+        button.style.color = 'white';
+      } else {
+        button.style.backgroundColor = 'green';
+        button.style.color = 'black';
+      }
+      isToggled = !isToggled;
+    }
   }
-});
-      
+
+  // Request permission for motion events on iOS
+  const permButton = document.getElementById('requestPermissionButton');
+  permButton.addEventListener('click', () => {
+    if (typeof DeviceMotionEvent.requestPermission === 'function') {
+      DeviceMotionEvent.requestPermission()
+        .then(permissionState => {
+          if (permissionState === 'granted') {
+            window.addEventListener('devicemotion', handleMotion);
+            permButton.style.display = 'none'; // Hide permission button after granting
+          }
+        })
+        .catch(console.error);
+    } else {
+      // Non-iOS or no need to request permission
+      window.addEventListener('devicemotion', handleMotion);
+      permButton.style.display = 'none';
+    }
+  });
